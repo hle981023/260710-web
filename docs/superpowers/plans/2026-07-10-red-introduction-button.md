@@ -75,7 +75,7 @@ Expected: the code diff changes only the two approved CSS declarations.
 
 **Files:**
 - Publish: Git commit on `main`
-- Upload: `index.html` to `/html/index.html`
+- Upload: `index.html` to `/html/my/index.html`
 
 **Interfaces:**
 - Consumes: the verified committed `index.html`
@@ -100,16 +100,16 @@ Expected: both commands output the same full commit SHA.
 
 - [ ] **Step 3: Inspect the FTP root without changing it**
 
-Connect with the supplied FTP credentials and confirm that the existing `/html` document directory remains available. Do not create, rename, or delete directories.
+Connect with the supplied FTP credentials and confirm that the existing `/html/my` document directory remains available. Do not create, rename, or delete directories.
 
 - [ ] **Step 4: Upload only `index.html`**
 
-Use passive FTP and binary transfer mode to replace `/html/index.html` with the committed local `index.html`.
+Use passive FTP and binary transfer mode to replace `/html/my/index.html` with the committed local `index.html`.
 
 Expected: FTP returns a successful transfer response and the remote byte count matches the local file.
 
 - [ ] **Step 5: Verify the live deployment**
 
-Fetch `http://yongbong.dothome.co.kr/index.html` with cache bypass and assert that the `.next-link` CSS contains `color: white` and `background: #e60012`.
+Fetch `http://yongbong.dothome.co.kr/my/index.html` with cache bypass and assert that the `.next-link` CSS contains `color: white` and `background: #e60012`.
 
 Expected: HTTP request succeeds and both declarations are present in the served HTML.
