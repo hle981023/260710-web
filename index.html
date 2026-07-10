@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hyerim First Web</title>
+<script>
+  (function(d) {
+    var config = {
+      kitId: 'mwd6hho',
+      scriptTimeout: 3000,
+      async: true
+    },
+    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+  })(document);
+</script>
+
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      font-family: "agahnsangsoo2012", sans-serif;
+    }
+
+    .stage {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .background {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .random-text {
+      position: absolute;
+      margin: 0;
+      color: black;
+      font-weight: 700;
+      display: none;
+      transform: translate(-50%, -50%);
+    }
+
+    .next-link {
+      position: absolute;
+      left: 50%;
+      bottom: 40px;
+      transform: translateX(-50%);
+      display: none;
+      color: black;
+      background: white;
+      padding: 12px 20px;
+      font-size: 24px;
+      font-weight: bold;
+      text-decoration: none;
+      border: 2px solid black;
+      z-index: 10;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stage">
+    <img src="01.png" alt="배경 이미지" class="background">
+
+    <p class="random-text">안녕하세요!</p>
+    <p class="random-text">반갑습니다!</p>
+    <p class="random-text">친하게</p>
+    <p class="random-text">지내구</p>
+    <p class="random-text">싶어!</p>
+
+    <a href="home.html" class="next-link">자기소개로...</a>
+  </div>
+
+ <script>
+  const stage = document.querySelector(".stage");
+  const texts = document.querySelectorAll(".random-text");
+  const nextLink = document.querySelector(".next-link");
+
+  let currentIndex = 0;
+
+  stage.addEventListener("click", function () {
+    if (currentIndex >= texts.length) {
+      return;
+    }
+
+    const text = texts[currentIndex];
+
+    text.style.left = Math.random() * 80 + 10 + "%";
+    text.style.top = Math.random() * 80 + 10 + "%";
+
+    const randomSize = Math.random() * 50 + 30;
+    text.style.fontSize = randomSize + "px";
+
+    text.style.display = "block";
+
+    currentIndex = currentIndex + 1;
+
+    if (currentIndex === texts.length) {
+      nextLink.style.display = "block";
+    }
+  });
+</script>
+</body>
+</html>

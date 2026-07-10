@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>book archive</title>
+
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'mwd6hho',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+  </script>
+
+  <style>
+    html, body {
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      font-family: "agahnsangsoo2012", sans-serif;
+    }
+
+    body {
+      background: yellow;
+      overflow: hidden;
+    }
+
+    .book-page {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .book-image {
+      max-width: 82vw;
+      max-height: 88vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .ending-text {
+      display: none;
+      color: black;
+      font-size: clamp(48px, 8vw, 140px);
+      font-weight: 700;
+      text-align: center;
+      line-height: 1.1;
+    }
+
+    .back-link {
+      position: absolute;
+      left: 24px;
+      top: 20px;
+      color: black;
+      font-size: 28px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="book-page" id="bookPage">
+    <a href="home.html" class="back-link">back</a>
+
+    <img src="01start.png" class="book-image" id="bookImage" alt="책 이미지">
+
+    <div class="ending-text" id="endingText">
+      UPDATING...<br>
+      TO BE CONTINUED
+    </div>
+  </main>
+
+<script>
+  const bookImage = document.querySelector("#bookImage");
+  const endingText = document.querySelector("#endingText");
+  const bookPage = document.querySelector("#bookPage");
+
+  const images = [
+    { src: "01start.png", rotate: "90deg", scale: 0.7 },
+    { src: "02.png", rotate: "-90deg", scale: 1 },
+    { src: "03.png", rotate: "180deg", scale: 1 },
+    { src: "04.png", rotate: "0deg", scale: 1 },
+    { src: "05.png", rotate: "0deg", scale: 1 },
+    { src: "06.png", rotate: "-90deg", scale: 1 },
+    { src: "07.png", rotate: "0deg", scale: 1 },
+    { src: "08.png", rotate: "0deg", scale: 1 },
+    { src: "09.png", rotate: "0deg", scale: 1 },
+    { src: "10.png", rotate: "-90deg", scale: 1 },
+    { src: "11.png", rotate: "90deg", scale: 1 },
+    { src: "12.png", rotate: "-90deg", scale: 1 },
+    { src: "13.png", rotate: "0deg", scale: 1 },
+    { src: "14.png", rotate: "0deg", scale: 1 },
+    { src: "15.png", rotate: "0deg", scale: 1 },
+    { src: "16.png", rotate: "-90deg", scale: 1 },
+    { src: "17.png", rotate: "0deg", scale: 1 },
+    { src: "18.png", rotate: "-90deg", scale: 1 },
+    { src: "19.png", rotate: "0deg", scale: 1 },
+    { src: "20.png", rotate: "-90deg", scale: 1 },
+    { src: "21.png", rotate: "0deg", scale: 1 },
+    { src: "22.png", rotate: "-90deg", scale: 1 },
+    { src: "23.png", rotate: "0deg", scale: 1 },
+    { src: "24.png", rotate: "-90deg", scale: 1 }
+  ];
+
+  let currentIndex = 0;
+
+  function showImage() {
+    bookImage.src = images[currentIndex].src;
+    bookImage.style.transform =
+      "rotate(" + images[currentIndex].rotate + ") scale(" + images[currentIndex].scale + ")";
+  }
+
+  showImage();
+
+  bookPage.addEventListener("click", function () {
+    currentIndex = currentIndex + 1;
+
+    if (currentIndex < images.length) {
+      showImage();
+    } else {
+      bookImage.style.display = "none";
+      endingText.style.display = "block";
+    }
+  });
+</script>
+</body>
+</html>
