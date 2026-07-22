@@ -81,6 +81,13 @@
 			text-align: center;
 		}
 
+		.link-card:link,
+		.link-card:visited,
+		.link-card:hover,
+		.link-card:active {
+			color: var(--link);
+		}
+
 		.link-card:hover,
 		.link-card:focus-visible {
 			border-style: solid;
