@@ -1,110 +1,81 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="ko" id="top">
 <head>
-  <meta charset="utf-8">
-  	<meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hyerim First Web</title>
-<script>
-  (function(d) {
-    var config = {
-      kitId: 'mwd6hho',
-      scriptTimeout: 3000,
-      async: true
-    },
-    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-  })(document);
-</script>
-
-  <style>
-    html, body {
-      margin: 0;
-      width: 100%;
-      height: 100%;
-      font-family: "agahnsangsoo2012", sans-serif;
-    }
-
-    .stage {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    .background {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .random-text {
-      position: absolute;
-      margin: 0;
-      color: black;
-      font-weight: 700;
-      display: none;
-      transform: translate(-50%, -50%);
-    }
-
-    .next-link {
-      position: absolute;
-      left: 50%;
-      bottom: 40px;
-      transform: translateX(-50%);
-      display: none;
-      color: white;
-      background: #e60012;
-      padding: 12px 20px;
-      font-size: 24px;
-      font-weight: bold;
-      text-decoration: none;
-      border: 2px solid black;
-      z-index: 10;
-    }
-  </style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>혜림</title>
+	<link rel="icon" type="image/png" href="magic tool.png">
+	<link rel="apple-touch-icon" href="magic tool.png">
+	  <link rel="stylesheet" href="style.css">
+	
 </head>
-
 <body>
-  <div class="stage">
-    <img src="01.png" alt="배경 이미지" class="background">
+	<!-- Change --image-width to resize hamster.png. Example: 150px, 220px, 30vw -->
+	<main class="linktree" style="--image-width: 210px;">
+		<button class="spring-button" type="button" data-spring-button aria-label="크리퍼">
+			<img class="logo" src="magic tool.png" alt="크리퍼">
+		</button>
+		<div class="links" aria-label="Wikibird 링크 목록">
 
-    <p class="random-text">안녕하세요!</p>
-    <p class="random-text">반갑습니다!</p>
-    <p class="random-text">친하게</p>
-    <p class="random-text">지내구</p>
-    <p class="random-text">싶어!</p>
+			<!-- Copy an a.link-card block below to add more links. -->
+			
+			<a class="link-card" href="my/index.html">
+			<span class="link-title">Hello Home</span>
+			</a>
 
-    <a href="home.html" class="next-link">자기소개로...</a>
-  </div>
+			<a class="link-card" href="my egg/index.html">
+			<span class="link-title">Wizard</span>
+			</a>
 
- <script>
-  const stage = document.querySelector(".stage");
-  const texts = document.querySelectorAll(".random-text");
-  const nextLink = document.querySelector(".next-link");
+			<a class="link-card" href="logo grid skill/index.html">
+			<span class="link-title">L Guidy</span>
+			</a>
 
-  let currentIndex = 0;
+			<a class="link-card" href="my egg/index.html">
+			<span class="link-title">B Guidy</span>
+			</a>
+		</div>
+	</main>
 
-  stage.addEventListener("click", function () {
-    if (currentIndex >= texts.length) {
-      return;
-    }
 
-    const text = texts[currentIndex];
 
-    text.style.left = Math.random() * 80 + 10 + "%";
-    text.style.top = Math.random() * 80 + 10 + "%";
+	<script>
+		(() => {
+			const springButton = document.querySelector("[data-spring-button]");
+			if (!springButton) return;
 
-    const randomSize = Math.random() * 50 + 30;
-    text.style.fontSize = randomSize + "px";
+			let currentAnimation;
+			const jumpKeyframes = [
+				{ transform: "translateY(0)" },
+				{ transform: "translateY(-52px)" },
+				{ transform: "translateY(0)" }
+			];
 
-    text.style.display = "block";
+			const reducedMotionKeyframes = [
+				{ opacity: 1 },
+				{ opacity: 0.82 },
+				{ opacity: 1 }
+			];
 
-    currentIndex = currentIndex + 1;
+			function jump() {
+				currentAnimation?.cancel();
 
-    if (currentIndex === texts.length) {
-      nextLink.style.display = "block";
-    }
-  });
-</script>
+				if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+					currentAnimation = springButton.animate(reducedMotionKeyframes, {
+						duration: 160,
+						easing: "ease-out"
+					});
+					return;
+				}
+
+				currentAnimation = springButton.animate(jumpKeyframes, {
+					duration: 440,
+					easing: "cubic-bezier(.25, .8, .35, 1)"
+				});
+			}
+
+			springButton.addEventListener("click", jump);
+		})();
+	</script>
 </body>
 </html>

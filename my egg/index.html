@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Wizard</title>
+	<link rel="icon" type="image/png" href="W.png">
+
+<style>
+        @font-face {
+            font-family: "Flor";
+            src: url("FlorDeRuina-Semilla.otf") format("opentype");
+            font-weight: 100;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Pretendard";
+            src: url("./fonts/Pretendard-Regular.otf") format("opentype");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+        	 background-image:
+        linear-gradient(
+            rgba(255, 255, 255, 0.4),
+            rgba(255, 255, 255, 0.4)
+        ),
+        url("back.png");
+
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            }
+
+        /* 전체 페이지 */
+        .page {
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+
+
+        /* 실제 콘텐츠 */
+        .content {
+         position: relative;
+         z-index: 1;
+
+         width: min(1600px, calc(100% - 40px));
+         margin: 0 auto;
+         padding: 54px 0 80px;
+
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+
+         text-align: center;
+         }
+
+        .title {
+        margin: 0;
+
+        display: block;
+        width: fit-content;;
+
+        font-family: "Flor", monospace;
+        font-size: clamp(52px, 6vw, 82px);
+        font-weight: 100;
+        line-height: 1;
+        color: #ff0000;
+        }
+
+        .text1 {
+        margin: 18px auto 0;
+
+        display: block;
+        width: fit-content;
+        max-width: 500px;
+
+        font-family: "Pretendard", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.55;
+        word-break: keep-all;
+        color: #ff0000;
+        }
+
+        .how-title {
+    font-weight: 700;
+}
+
+.negative-heart {
+    color: gray;
+}
+
+.webgl-section {
+    width: 100%;
+    margin-top: 42px;
+}
+
+.webgl-wrap {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 16 / 9;
+    margin: 0 auto;
+}
+
+.webgl-wrap iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 12px;
+    background-color: #000000;
+}
+
+
+
+        /* 모바일 */
+        @media (max-width: 600px) {
+            .content {
+                width: min(100% - 48px, 560px);
+                padding-top: 40px;
+            }
+
+            .title {
+                font-size: 52px;
+                letter-spacing: -3px;
+            }
+
+            .text1 {
+                font-size: 13px;
+            }
+
+            /* 모바일에서는 바깥쪽 선 일부 숨기기 */
+            .guide-lines .mobile-hide {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <main class="content">
+            <h1 class="title">Wizard</h1>
+
+                <p class="text1">
+                Wizard는 관람자의 손짓만으로 마법의 상징물을 불러내는 실시간 웹캠 AR 인터랙티브 작품입니다. 카메라 앞에서 손을 움직이면, 손가락 위로 마법 오브젝트(알·자물쇠)가 소환되고 두 손을 맞추면 하트 마법이 화면 가득 퍼진다. 별도 장치 없이 웹 브라우저와 카메라만으로 누구나 마법사가 될 수 있습니다.
+                </p>
+
+                 <p class="text1">
+               <span class="how-title">사용방법</span><br>
+                왼쪽 검지를 편다.<br> 
+                오른쪽 검지를 편다.<br>
+                각자의 검지를 산모양으로 합쳐 만든다.<br>
+                검지를 구부려 손하트를 만든다.<br>
+                손바닥을 활짝 펼친다.<br>
+                <br>
+                <span class="negative-heart">
+               /* 네거티브 하트 로크온~ 오픈 하트~(나도 이제 아무?) */
+                </span>
+                </p>
+
+            <section class="webgl-section">
+    <div class="webgl-wrap">
+        <iframe
+            src="https://hle981023.github.io/TD_heart/web/"
+            title="Wizard WebGL Interaction"
+            allow="camera; fullscreen"
+            allowfullscreen>
+        </iframe>
+    </div>
+</section>
+        </main>
+    </div>
+</body>
+</html>

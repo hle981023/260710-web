@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>L Guidy</title>
+    <link rel="icon" type="image/png" href="LG.png">
+
+    <style>
+        @font-face {
+            font-family: "Steps Mono Thin";
+            src: url("./fonts/Steps-Mono-Thin.otf") format("opentype");
+            font-weight: 100;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "Pretendard";
+            src: url("./fonts/Pretendard-Regular.otf") format("opentype");
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        /* 전체 페이지 */
+        .page {
+            position: relative;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* 세로선 전체를 담는 레이어 */
+        .guide-lines {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+
+            pointer-events: none;
+        }
+
+        /* 세로선 하나 */
+        .guide-lines span {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: var(--x);
+
+            width: 1px;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        /* 일부 선을 조금 굵게 */
+        .guide-lines .bold {
+            width: 2px;
+        }
+
+        /* 실제 콘텐츠 */
+        .content {
+            position: relative;
+            z-index: 1;
+
+            width: min(560px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 54px 0 80px;
+
+            text-align: center;
+        }
+
+        .title {
+        margin: 0;
+
+        display: inline-block;
+        width: fit-content;
+
+        padding: 6px 12px;
+
+        font-family: "Steps Mono Thin", monospace;
+        font-size: clamp(52px, 6vw, 82px);
+        font-weight: 100;
+        letter-spacing: -4px;
+        line-height: 1;
+
+        background-color: #ffffff;
+        }
+
+        .text1 {
+        margin: 18px auto 0;
+
+        display: inline-block;
+        width: fit-content;
+        max-width: 500px;
+
+        padding: 10px 14px;
+
+        font-family: "Pretendard", sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.55;
+        word-break: keep-all;
+
+        background-color: #ffffff;
+        }
+
+        /* 이미지 묶음 */
+        .result-list {
+            margin-top: 42px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .result-item {
+         width: 100%;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         }
+
+        .result-item figcaption {
+            margin-bottom: 8px;
+
+            font-family: "Pretendard", sans-serif;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .result-item img {
+            display: block;
+
+            width: min(420px, 100%);
+            height: auto;
+
+            border: 1px solid rgba(0, 0, 0, 0.65);
+            background-color: #ffffff;
+        }
+
+        .hover-preview {
+            position: relative;
+            display: inline-block;
+
+            text-decoration: underline;
+            text-underline-offset: 4px;
+            cursor: pointer;
+        }
+
+        .hover-preview img {
+            position: absolute;
+            z-index: 10;
+
+            top: calc(100% + 12px);
+            left: 50%;
+        
+            width: 360px;
+            max-width: 80vw;
+            height: auto;
+
+            transform: translateX(-50%) translateY(8px);
+
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            border: 1px solid #000;
+            background-color: #fff;
+
+            transition:
+            opacity 0.2s ease,
+            transform 0.2s ease,
+            visibility 0.2s;
+            }
+
+.        hover-preview:hover img {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* 모바일 */
+        @media (max-width: 600px) {
+            .content {
+                width: min(100% - 48px, 560px);
+                padding-top: 40px;
+            }
+
+            .title {
+                font-size: 52px;
+                letter-spacing: -3px;
+            }
+
+            .text1 {
+                font-size: 13px;
+            }
+
+            /* 모바일에서는 바깥쪽 선 일부 숨기기 */
+            .guide-lines .mobile-hide {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- 불규칙한 세로선 -->
+        <div class="guide-lines" aria-hidden="true">
+            <span style="--x: 5.2%;"></span>
+            <span class="bold" style="--x: 6.3%;"></span>
+
+            <span style="--x: 15.4%;"></span>
+
+            <span style="--x: 26.1%;"></span>
+            <span class="bold" style="--x: 27.9%;"></span>
+
+            <span class="bold" style="--x: 72%;"></span>
+
+            <span style="--x: 81.2%;"></span>
+            <span class="bold" style="--x: 82.5%;"></span>
+
+            <span class="mobile-hide" style="--x: 93.3%;"></span>
+            <span class="mobile-hide" style="--x: 98.1%;"></span>
+        </div>
+
+        <main class="content">
+            <h1 class="title">Light Guidy</h1>
+                <p class="text1">
+                 Guidy는
+                 <span class="hover-preview">
+                     기존의 반복적인 로고 가이드 제작 과정을
+                     <img src="ZZALimages.png" alt="기존 로고 가이드 제작 과정">
+                 </span>
+                줄이기 위해 만든 Illustrator 기반 로고 가이드 자동화 실험입니다.
+                원본 로고는 수정하지 않고 별도 레이어에 그리드, 클리어스페이스,
+                nX 등 측정 기준을 시각화하여 브랜드 가이드 제작에 필요한 기본 구조를
+                빠르게 생성합니다. 원형 도형의 시각 보정을 고려해 실제 외곽이 아닌
+                직선형 글자 기준으로 가이드선을 조정했으며, 얇은 그리드선, 굵은 측정선,
+                Pretendard 라벨, 투명도 있는 클리어스페이스 면을 적용했습니다.
+                최종 결과물은 로고 원본을 보존하면서도 디자이너가 바로 확인하고
+                수정할 수 있는 로고 그리드 시스템으로 정리되었습니다.
+            </p>
+
+            <section class="result-list">
+                <figure class="result-item">
+                    <figcaption>Guidy 실행 전</figcaption>
+
+                    <img
+                        src="before.png"
+                        alt="Guidy 실행 전 로고"
+                    >
+                </figure>
+
+                <figure class="result-item">
+                    <figcaption>Guidy 실행 후</figcaption>
+
+                    <img
+                        src="after.png"
+                        alt="Guidy 실행 후 로고 그리드"
+                    >
+                </figure>
+            </section>
+        </main>
+    </div>
+</body>
+</html>
