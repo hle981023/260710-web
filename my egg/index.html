@@ -129,6 +129,49 @@
     background-color: #000000;
 }
 
+.process-section {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 42px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.process-caption {
+    margin: 0;
+
+    font-family: "Pretendard", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: gray;
+
+    text-align: center;
+}
+
+.process-video {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    border: 0;
+    border-radius: 12px;
+
+    background-color: #000000;
+}
+
+.process-image {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    border-radius: 12px;
+}
+
 
 
         /* 모바일 */
@@ -162,7 +205,7 @@
             <h1 class="title">Wizard</h1>
 
                 <p class="text1">
-                Wizard는 관람자의 손짓만으로 마법의 상징물을 불러내는 실시간 웹캠 AR 인터랙티브 작품입니다. 카메라 앞에서 손을 움직이면, 손가락 위로 마법 오브젝트(알·자물쇠)가 소환되고 두 손을 맞추면 하트 마법이 화면 가득 퍼진다. 별도 장치 없이 웹 브라우저와 카메라만으로 누구나 마법사가 될 수 있습니다.
+                Wizard는 관람자의 손짓만으로 마법의 상징물을 불러내는<br>실시간 웹캠 AR 인터랙티브 작업입니다. AI로 터치디자이너와 블렌더를<br>연동하여 제작하였고, 카메라 앞에서 손을 움직이면, 손가락 위로<br>마법 오브젝트(알·자물쇠)가 소환되고 두 손을 맞추면 하트 마법이 화면 가득 퍼집니다.<br>별도 장치 없이 웹 브라우저와 카메라만으로 누구나 마법사가 될 수 있습니다.
                 </p>
 
                  <p class="text1">
@@ -181,12 +224,33 @@
             <section class="webgl-section">
     <div class="webgl-wrap">
         <iframe
-            src="https://hle981023.github.io/TD_heart/web/"
+            src="https://hle981023.github.io/TD_heart/web/?v=2"
             title="Wizard WebGL Interaction"
             allow="camera; fullscreen"
             allowfullscreen>
         </iframe>
     </div>
+</section>
+
+<section class="process-section">
+    <p class="process-caption">
+        터치디자이너로 로딩하면 더 멋졌는데...
+    </p>
+
+    <video class="process-video"
+    autoplay
+    muted
+    loop
+    playsinline>
+        <source src="record.mov" type="video/mp4">
+        브라우저에서 영상을 재생할 수 없습니다.
+    </video>
+
+    <img
+        class="process-image"
+        src="screenshot.png"
+        alt="터치디자이너 작업 화면"
+    >
 </section>
         </main>
     </div>
